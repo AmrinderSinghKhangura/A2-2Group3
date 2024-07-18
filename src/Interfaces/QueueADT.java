@@ -1,7 +1,6 @@
 package Interfaces;
 
 import java.io.Serializable;
-import java.util.Iterator;
 
 /**
  * This is the professional Queue Interface for Object-Oriented 

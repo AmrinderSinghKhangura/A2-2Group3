@@ -2,7 +2,6 @@ package Interfaces;
 
 import java.io.Serializable;
 import java.util.EmptyStackException;
-import java.util.Iterator;
 
 /**
  * This is the professional Stack Interface for Object-Oriented 
