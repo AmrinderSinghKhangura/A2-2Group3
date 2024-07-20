@@ -1,5 +1,6 @@
 package utility;
 
+import Exceptions.EmptyQueueException;
 import Interfaces.Iterator;
 import Interfaces.QueueADT;
 
