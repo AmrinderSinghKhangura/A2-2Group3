@@ -21,7 +21,7 @@ class MyQueueTests {
   void enqueue() throws EmptyQueueException, NullPointerException {
     queue.enqueue(2);
     assertEquals(2, queue.size());
-    assertEquals(2, queue.peek());
+    assertEquals(1, queue.peek());
 
     assertThrows(NullPointerException.class, () -> queue.enqueue(null));
   }

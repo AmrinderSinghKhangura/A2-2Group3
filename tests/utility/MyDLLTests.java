@@ -80,7 +80,7 @@ class MyDLLTests {
 
     dll.add(1);
     dll.add(2);
-    assertEquals(2, dll.remove(1));
+    assertEquals(1, dll.remove(1));
     assertEquals(1, dll.size());
 
     assertThrows(IndexOutOfBoundsException.class, () -> dll.remove(1));
@@ -89,6 +89,7 @@ class MyDLLTests {
   @Test
   void set() {
     assertEquals(1, dll.set(0, 2));
+    assertEquals(2, dll.get(0));
 
     assertThrows(IndexOutOfBoundsException.class, () -> dll.set(1, 2));
     assertThrows(NullPointerException.class, () -> dll.set(0, null));
