@@ -53,7 +53,7 @@ public class MyQueue<E> implements QueueADT<E>
   }
 
   /**
-   * enqueue method to add an element to the queue
+   * enqueue method to add an element to the back of the queue
    * @param toAdd element to add
    * @return front
    */
@@ -92,6 +92,10 @@ public class MyQueue<E> implements QueueADT<E>
     return data.remove(front);
   }
 
+  /**
+   * peek method to return the element at the front of the queue
+   * @return element at the front
+   */
   @Override
   public E peek() throws EmptyQueueException
   {
@@ -102,6 +106,9 @@ public class MyQueue<E> implements QueueADT<E>
     return data.get(front);
   }
 
+  /**
+   * dequeueAll method to remove all elements from the queue
+   */
   @Override
   public void dequeueAll()
   {
@@ -110,12 +117,20 @@ public class MyQueue<E> implements QueueADT<E>
     front = -1;
   }
 
+  /**
+   * isEmpty method to check if the queue is empty
+   * @return true if empty, false if not
+   */
   @Override
   public boolean isEmpty()
   {
     return length == 0;
   }
 
+  /**
+   * iterator method to return an iterator for the queue
+   * @return iterator
+   */
   @Override
   public Iterator<E> iterator()
   {
@@ -123,6 +138,11 @@ public class MyQueue<E> implements QueueADT<E>
 
   }
 
+  /**
+   * equals method to compare two queues to see if they are equal
+   * @param that queue to compare to
+   * @return true if equal, false if not
+   */
   @Override
   public boolean equals(QueueADT<E> that)
   {
@@ -146,6 +166,7 @@ public class MyQueue<E> implements QueueADT<E>
     return true;
   }
 
+
   @Override
   public Object[] toArray()
   {
@@ -158,12 +179,20 @@ public class MyQueue<E> implements QueueADT<E>
     return data.toArray((E[]) holder);
   }
 
+  /**
+   * size method to return the size of the queue
+   * @return length
+   */
   @Override
   public boolean isFull()
   {
     return length == capacity;
   }
 
+  /**
+   * size method to return the size of the queue
+   * @return length
+   */
   @Override
   public int size()
   {
