@@ -17,18 +17,35 @@ public class MyArrayList<E> implements ListADT<E> {
     //Declare the Size of the Array
   private int size;
 
-    //Parameterless Constructor
+  /**
+   * Parameterless Constructor
+   * precondition: none
+   * postcondition: creates an array of default capacity and sets the size to 0
+   *
+   */
   public MyArrayList() {
     elements = (E[]) new Object[DEFAULT_CAPACITY];
     size = 0;
   }
-    // Parameterized Constructor - Allows Declaration of Initial Capacity
+  /**
+   * Parameterless Constructor
+   * precondition: none
+   * postcondition: creates an array of defined capacity and sets size to 0
+   *
+   */
+
     public MyArrayList(int initialCapacity) {
         elements = (E[]) new Object[initialCapacity];
         size = 0;
   }
     //Private helper methods
-
+  /**
+   * gets the index of the first occurence of the specified element in this list
+   * precondition: none
+   * postcondition: returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element
+   *
+   */
+    //
     private int indexOf(E toFind) {
       for (int i = 0; i < size; i++) {
         if (toFind.equals(elements[i])) {
@@ -37,18 +54,32 @@ public class MyArrayList<E> implements ListADT<E> {
       }
       return -1;
     }
-
+    /**
+     * increases the capacity of the array, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument
+     * precondition: none
+     * postcondition: increases the capacity of the array, if necessary, to ensure that it can hold at least the number of elements specified by the minimum capacity argument
+     *
+     */
   private void ensureCapacity() {
     if (size == elements.length) {
       elements = Arrays.copyOf(elements, size * 2);
     }
   }
+  /**
+   * returns the size of the array
+   * precondition: none
+   * postcondition: returns the size of the array
+   * */
 
   @Override
   public int size() {
     return size;
   }
-
+    /**
+     * clears the array
+     * precondition: none
+     * postcondition: clears the array
+     * */
   @Override
   public void clear() {
     for (int i = 0; i < size; i++) {
@@ -56,7 +87,13 @@ public class MyArrayList<E> implements ListADT<E> {
     }
     size = 0;
   }
-
+    /**
+     * adds the specified element at the specified index
+     * precondition: none
+     * postcondition: adds the specified element at the specified index
+     * @throws NullPointerException if the element to add is null
+     * @throws IndexOutOfBoundsException if the index is out of range
+     * */
   @Override
   public boolean add(int index, E toAdd) throws NullPointerException, IndexOutOfBoundsException {
     if(toAdd == null) {
@@ -71,17 +108,29 @@ public class MyArrayList<E> implements ListADT<E> {
     size++;
     return true;
   }
-
+    /**
+     * adds the specified element to the array
+     * precondition: none
+     * postcondition: adds the specified element to the array
+     * @throws  NullPointerException if the element to add is null
+     * @throws IndexOutOfBoundsException if the index is out of range
+     * */
   @Override
   public boolean add(E toAdd) throws NullPointerException, IndexOutOfBoundsException {
     if(toAdd == null) {
       throw new NullPointerException("Cannot add a null element to the list.");
     }
+
     ensureCapacity();
     elements[size++] = toAdd;
     return true;
   }
-
+    /**
+     * adds all the elements in the specified list to the array
+     * precondition: none
+     * postcondition: adds all the elements in the specified list to the array
+     * @throws NullPointerException if the element to add is null
+     * */
   @Override
   public boolean addAll(ListADT<? extends E> toAdd) throws NullPointerException {
     if(toAdd == null) {
@@ -97,7 +146,12 @@ public class MyArrayList<E> implements ListADT<E> {
     return modified;
 
   }
-
+    /**
+     * gets the element at the specified index
+     * precondition: elements in the array
+     * postcondition: gets the element at the specified index
+     * @throws IndexOutOfBoundsException if the index is out of range
+     * */
   @Override
   public E get(int index) throws IndexOutOfBoundsException {
     if(index < 0 || index >= size) {
@@ -105,7 +159,12 @@ public class MyArrayList<E> implements ListADT<E> {
     }
     return elements[index];
   }
-
+    /**
+     * removes the element at the specified index
+     * precondition: elements in the array
+     * postcondition: removes the element at the specified index
+     * @throws IndexOutOfBoundsException if the index is out of range
+     * */
   @Override
   public E remove(int index) throws IndexOutOfBoundsException {
     if(index < 0 || index >= size) {
@@ -119,6 +178,12 @@ public class MyArrayList<E> implements ListADT<E> {
     elements[--size] = null; // clear to let GC do its work
     return oldValue;
   }
+    /**
+     * removes the first occurrence of the specified element from the array
+     * precondition: elements in the array
+     * postcondition: removes the first occurrence of the specified element from the array
+     * @throws NullPointerException if the element to remove is null
+     * */
 
   @Override
   public E remove(E toRemove) throws NullPointerException {
@@ -133,7 +198,13 @@ public class MyArrayList<E> implements ListADT<E> {
     }
     return null;
   }
-
+    /**
+     * sets the element at the specified index to the specified element
+     * precondition: elements in the array
+     * postcondition: sets the element at the specified index to the specified element
+     * @throws NullPointerException if the element to set is null
+     * @throws IndexOutOfBoundsException if the index is out of range
+     * */
   @Override
   public E set(int index, E toChange) throws NullPointerException, IndexOutOfBoundsException {
     if(toChange == null) {
@@ -146,12 +217,21 @@ public class MyArrayList<E> implements ListADT<E> {
     elements[index] = toChange;
     return oldValue;
   }
-
+    /**
+     * checks if the array is empty
+     * precondition: none
+     * postcondition: returns true if the array is empty, false otherwise
+     * */
   @Override
   public boolean isEmpty() {
     return size == 0;
   }
-
+    /**
+     * checks if the array contains the specified element
+     * precondition: none
+     * postcondition: returns true if the array contains the specified element, false otherwise
+     * @throws NullPointerException if the element to find is null
+     * */
   @Override
   public boolean contains(E toFind) throws NullPointerException {
     if(toFind == null) {
@@ -159,7 +239,12 @@ public class MyArrayList<E> implements ListADT<E> {
     }
     return indexOf(toFind) >= 0;
   }
-
+    /**
+     * searches for the specified element in the array
+     * precondition: none
+     * postcondition: returns the index of the first occurrence of the specified element in the array, or -1 if the array does not contain the element
+     * @throws NullPointerException if the element to find is null
+     * */
   @Override
   public E[] toArray(E[] toHold) throws NullPointerException {
     if (toHold == null) throw new NullPointerException("The array provided cannot be null");
@@ -173,12 +258,20 @@ public class MyArrayList<E> implements ListADT<E> {
     return toHold;
   }
 
-
+  /**
+   * Returns an array containing all of the elements in this list in proper sequence (from first to last element).
+   * precondition: none
+   * postcondition: returns an array containing all of the elements in this list in proper sequence (from first to last element)
+   * */
   @Override
   public Object[] toArray() {
     return Arrays.copyOf(elements, size);
   }
-
+    /**
+     * returns an iterator over the elements in this list in proper sequence
+     * precondition: none
+     * postcondition: returns an iterator over the elements in this list in proper sequence
+     * */
   @Override
   public Iterator<E> iterator() {
     return new Iterator<E>() {
