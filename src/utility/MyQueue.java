@@ -11,6 +11,10 @@ public class MyQueue<E> implements QueueADT<E>
   private int capacity;
   private int length;
 
+  /**
+   * This is the parametered constructor for the MyQueue class with a given capacity
+   * @param capacity
+   */
   public MyQueue(int capacity)
   {
     this.capacity = capacity;
@@ -19,6 +23,9 @@ public class MyQueue<E> implements QueueADT<E>
     front = -1;
   }
 
+  /**
+   * This is the default constructor for the MyQueue class with a capacity of 100
+   */
   public MyQueue()
   {
     this.capacity = 100;
@@ -27,16 +34,29 @@ public class MyQueue<E> implements QueueADT<E>
     front = -1;
   }
 
+  /**
+   * This is the getLength method for the MyQueue class
+   * @return length
+   */
   public int getLength()
   {
     return length;
   }
 
+  /**
+   * This is the getCapacity method for the MyQueue class
+   * @return capacity
+   */
   public int getCapacity()
   {
     return capacity;
   }
 
+  /**
+   * enqueue method to add an element to the queue
+   * @param toAdd element to add
+   * @return front
+   */
   @Override
   public void enqueue(E toAdd) throws NullPointerException
   {
@@ -50,12 +70,16 @@ public class MyQueue<E> implements QueueADT<E>
     }
     if(isFull())
     {
-      //throw new FullQueueException();
+//      throw new FullQueueException();
     }
     data.add(toAdd);
     length++;
   }
 
+  /**
+   * dequeue method to remove an element from the front of the queue
+   * @return element removed
+   */
   @Override
   public E dequeue() throws EmptyQueueException
   {
